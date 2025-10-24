@@ -1,5 +1,42 @@
 #include <stdio.h>
 
+//Movimento Torre
+void moverTorre(int casas) {
+    if (casas == 0) return; 
+
+    printf("Direita\n");
+    moverTorre(casas - 1); 
+}
+
+
+//Movimento Bispo
+void moverBispo(int casas) {
+    if (casas == 0) {
+    return;
+}
+
+    // Loop externo: movimento vertical (Cima)
+    for (int i = 1; i <= 1; i++) {
+        printf("Cima\n");
+
+        // Loop interno: movimento horizontal (Direita)
+        for (int j = 1; j <= 1; j++) {
+            printf("Direita\n");
+        }
+    }
+
+    // Chamada recursiva
+    moverBispo(casas - 1);
+}
+
+//Movimento Rainha
+void moverRainha(int casas) {
+    if (casas == 0) return;
+
+    printf("Esquerda\n");
+    moverRainha(casas - 1);
+}
+
 int main(){
 
 int peca, casa;
@@ -22,93 +59,57 @@ if (peca == 1)
     printf("Peça escolhida: Torre\n");
     printf("\n");
 
-       do { 
-    printf("Casas a serem andadas a direita:\n");
-    printf("1 para 1 casa\n");
-    printf("2 para 2 casas\n");
-    printf("3 para 3 casas\n");
-    printf("4 para 4 casas\n");
-    printf("5 para 5 casas\n");
-    printf("O programa não será iniciado até que seja enviado um número valido\n");
-    scanf("%d", &casa);
-    } while (casa < 1 || casa > 5);
+    int casa = 5;
     printf("A Torre vai andar esse numero de casas: %d\n", casa);
+    printf("\n");
 
-    //Contador de movimento
-    int i = 0;
+    moverTorre(casa);
 
-    do{
-        printf("Para a Direita\n");
-        i++;
-    } while (i < casa);
-    
 }
     //Entrada de dados de quantidade de casas escolhidas
 else if (peca == 2)
 {
     printf("Peça escolhida: Bispo\n");
     printf("\n");
-    do { 
-    printf("Casas a serem andadas para cima e á direita:\n");
-    printf("1 para 1 casa\n");
-    printf("2 para 2 casas\n");
-    printf("3 para 3 casas\n");
-    printf("4 para 4 casas\n");
-    printf("5 para 5 casas\n");
-    printf("O programa não será iniciado até que seja enviado um número valido\n");
-    scanf("%d", &casa);
-    } while (casa < 1 || casa > 5);
-    printf("O Bispo vai andar esse numero de casas: %d\n", casa);
+    
+    int casa = 5;
+    printf("O Bispo vai andar esse numero de diagonais: %d\n", casa);
+    printf("\n");
 
-    //Contador de movimento
-    int i = 0;
 
-    do{
-        printf("Para Cima e para Direita\n");
-        i++;
-    } while (i < casa);
+    moverBispo(casa);
 }
     //Entrada de dados de quantidade de casas escolhidas
 else if(peca ==3)
 {
     printf("Peça escolhida: Rainha\n");
     printf("\n");
-    do { 
-    printf("Casas a serem andadas à esquerda:\n");
-    printf("1 para 1 casa\n");
-    printf("2 para 2 casas\n");
-    printf("3 para 3 casas\n");
-    printf("4 para 4 casas\n");
-    printf("5 para 5 casas\n");
-    printf("6 para 6 casas\n");
-    printf("7 para 7 casas\n");
-    printf("8 para 8 casas\n");
-    printf("O programa não será iniciado até que seja enviado um número valido\n");
-    scanf("%d", &casa);
-    } while (casa < 1 || casa > 8);
+    
+    int casa = 8;
     printf("A Rainha vai andar esse numero de casas: %d\n", casa);
-
-    //Contador de movimento
-    int i = 0;
-
-    do{
-        printf("Para a Esquerda\n");
-        i++;
-    } while (i < casa);
+    printf("\n");
+    moverRainha(casa);
 }
 else{
     printf("Peça escolhida: Cavalo\n");
     printf("\n");
     
-    for (int i = 0; i < 2; i++){
-        printf("Para Baixo\n");
+     for(int i = 1; i <= 2; i++)
+    {
+        printf("Cima\n");
 
-        if(i == 1){
-            int j = 0;
-            do {
-                printf("Para a Esquerda\n");
-                j++;
-            } while (j < 1);
+        if (i == 2) {
+            for (int j = 1; j <= 3; j++) {
+                
+                if (j == 2) {
+                    continue; 
+                }
+                if (j > 1) {
+                    break; 
+                }
+
+                printf("Direita\n");
+            }
         }
     }
 }
